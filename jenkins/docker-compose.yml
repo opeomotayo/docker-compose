@@ -1,0 +1,19 @@
+version: '3'
+
+volumes:
+  jenkins-data: {} 
+
+networks:
+  devnet:
+    driver: bridge
+
+services:
+ jenkins:
+  image: jenkins/jenkins:lts-jdk11
+  container_name: jenkins
+  ports:
+    - "8080:8080"
+  networks:
+    - devnet
+  volumes:
+    - "jenkins-data:/var/jenkins_home"
